@@ -1,38 +1,82 @@
-.App {
-  text-align: center;
+html,
+body {
+  height: 100%;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.AllPages {
+
+ 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+
+
+
+
+.e14_1031 { 
+	width:680px;
+	height:59px;
+	position:absolute;
+	left:386px;
+	top:137px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+
+
+
+.search { 
+	width:597px;
+	height:59px;
+	position:absolute;
+	left:0px;
+	top:0px;
+	border-radius:30px;
+    border:2px transparent rgba(194, 194, 194, 1);
+	font-size: 20px;
+	padding-left: 20px;
+	color: rgba(194, 194, 194, 1);
 }
 
-.App-link {
-  color: #61dafb;
+.search-icon{
+	position: absolute;
+	margin-left: 600px;
+	background-color: transparent;
+	border: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.e14_1030 { 
+	width:904px;
+	height:869px;
+	position:absolute;
+	left:252px;
+	top:219px;
+}
+
+.e6_606 { 
+	color:rgba(0, 0, 0, 1);
+	opacity:0.5;
+	width:451px;
+	height:188px;
+	position:absolute;
+	left:0px;
+	top:137px;
+	text-align:left;
+	font-size:40px;
+	letter-spacing:9;
+}
+
+
+.e6_609 { 
+	
+	width:650px;
+	height:869px;
+	position:absolute;
+	left:94px;
+	top:0px;
+	background-image:url(./images/big_shoes_hero.png);
+	background-repeat:no-repeat;
+	background-size:cover;
 }

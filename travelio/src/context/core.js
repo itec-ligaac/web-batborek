@@ -3,7 +3,17 @@ export const UserContext = createContext();
 
 
 function UserContextProvider(props) {
+  const [totalCase,setTotalCase] = useState("")
+  const[totalActiveCase,setTotalActiveCase] = useState("");
+  const[totalRecovered,setTotalRecovered] = useState("");
+  const [totalDeath,setTotalDeath] = useState("");
+
   const [todayCase, setTodayCase] = useState("");
+  const [todayActiveCase,setTodayActiveCase] = useState("");
+  const[todayRecovered,setTodayRecovered] = useState("");
+  const [todayDeath,setTodayDeath] = useState("");
+
+
   const [cities, setCities] = useState([]);
   var cityNames = [];
   const [city, setCity] = useState("");
@@ -12,8 +22,7 @@ function UserContextProvider(props) {
   const [error, setError] = useState("");
   const [weather, setWeather] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-
-
+  
 
   const SearchCovid = () => {
     // GET request using fetch with error handling
@@ -29,8 +38,15 @@ function UserContextProvider(props) {
           const error = (data && data.message) || response.statusText;
           return Promise.reject(error);
         }
-
         setTodayCase(data.todayCases);
+        setTodayActiveCase(data.active);
+        setTodayDeath(data.todayDeaths);
+        setTodayRecovered(data.todayRecovered);
+
+        setTotalCase(data.cases);
+        setTotalActiveCase(data.active);
+        setTotalDeath(data.deaths);
+        setTotalRecovered(data.recovered);
         
       })
       .catch((error) => {
@@ -60,6 +76,7 @@ function UserContextProvider(props) {
       .then(async (response) => {
         const data = await response.json();
         setCities(data.suggestions[0].entities);
+        SearchCovid();
         setCurrentPage(1)
       })
       .catch((err) => {
@@ -119,9 +136,18 @@ function UserContextProvider(props) {
 
 
   const value = {
+
       currentPage,
    
     todayCase,
+    todayActiveCase,
+    todayRecovered,
+    todayDeath,
+    totalCase,
+    totalActiveCase,
+    totalRecovered,
+    totalDeath,
+
     setTodayCase,
     cities,
     setCities,

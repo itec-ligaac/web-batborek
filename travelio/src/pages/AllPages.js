@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/core";
+import '../App.css';
 
 import MainPage from "./MainPage";
 import DestinationsPage from "./DestinationsPage";
@@ -10,9 +11,12 @@ export const AllPages = () => {
   const { currentPage } = useContext(UserContext);
   return (
     <div>
+    <div>
       {currentPage === 0 && <MainPage />}
       {currentPage === 1 && <DestinationsPage />}
       {currentPage === 2 && <HotelsPage />}
+    
+    </div>
     </div>
   );
 };
