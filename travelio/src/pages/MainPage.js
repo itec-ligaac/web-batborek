@@ -10,6 +10,7 @@ export const MainPage = () => {
   const [hotels, setHotels] = useState([]);
   const [country, setCountry] = useState("");
   const [error, setError] = useState("");
+  const [weather, setWeather] = useState("");
 
   const SearchCovid = () => {
     // GET request using fetch with error handling
@@ -54,7 +55,6 @@ export const MainPage = () => {
       .then(async (response) => {
         const data = await response.json();
         setCities(data.suggestions[0].entities);
-        
        
       })
       .catch((err) => {
@@ -80,47 +80,69 @@ export const MainPage = () => {
         hotels.map((hotel, index) => {
           console.log(index, hotel.name);
         });
+        searchWeather();
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
-  const cityNameArray =()=>
+
+  const searchWeather = ()=>{
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=".concat(city + "&units=metric&appid=43b811164160ccdbae3ecc18fe414287"), 
   {
-    cities.map((city, index) => {
-        cityNames.push(city.name);
-        console.log(index, city.name);
-      });
-      console.log(cityNames);
+	"method": "GET",
+})
+.then(async(response) => {
+  const data = await response.json();
+  setWeather(data.main.temp)
+	console.log(weather);
+})
+.catch(err => {
+	console.error(err);
+});
   }
 
+  
+
   const handleCity = (index) => {
-      
-    console.log(index);
+   setCity(cities[index].name)
+   console.log(city)
   };
 
   return (
     <>
       <Select options={options} onChange={handleChange.bind(this)} />
-      {console.log(country)}
+     
       <button onClick={SearchCovid}>Search</button>
       <h1>Today's Case: {todayCase}</h1>
 
-      <ul>
-        {cities.map((item, index) => (
-          <div key={index}
-        
-          >
-            <li>{item.name}</li>
-          </div>
-        ))}
-      </ul>
-      <button onClick={cityNameArray}>changeand show</button>
+        <div>
+          {cities.map((city,index)=>
+          <span key ={city.name}>
+            <div onClick={()=>handleCity(index)}>
+              {city.name}
+            </div>
+          </span>
+          )}
+        </div>
+        <button onClick={searchHotel}>SearchHotel</button>
+        <div>
+          {hotels.map((hotel,index)=>
+          <span key ={hotel.name}>
+            <div>
+              {hotel.name}
+            </div>
+          </span>
+          )}
+        </div>
+        <div>
+          temp in {city}: {weather} celcius
+        </div>
+
+   
     </>
   );
 };
-{
-  /* onClick={setCity(cities[index])} */
-}
+
 export default MainPage;
