@@ -136,6 +136,7 @@ function UserContextProvider(props) {
 
 
   const value = {
+    setCurrentPage,
 
       currentPage,
    

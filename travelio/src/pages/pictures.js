@@ -1,20 +1,9 @@
-import React, { useContext, useState, useMemo } from "react";
-import { UserContext } from "../context/core";
+import React from 'react'
 
-export const CovidPage = () => {
-  const { todayCase,
-    todayActiveCase,
-    todayRecovered,
-    todayDeath,
-    totalCase,
-    totalActiveCase,
-    totalRecovered,
-    totalDeath,  } = useContext(UserContext);
-
-  return (
-
-    <div>
-    <div>
+export const pictures = () => {
+    return (
+        <div>
+         <div>
         <div className="container">
           <div className="container-round">
             <div className="section-right">
@@ -59,7 +48,7 @@ export const CovidPage = () => {
                 </div>
               </div>
             </a>
-            <a href="saved.html">
+            <a href="pictures.html">
               <div className="e14_1023"><span className="e1_1034">Saved</span>
                 <div className="e1_1016">
                   <div className="ei1_1016_3_288">
@@ -91,10 +80,7 @@ export const CovidPage = () => {
         </div>
         <a href="index.html"><div className="travelio"><span className="e1_923">Travelio.</span></div></a>
       </div>
-      
-
-    </div>
-  );
-};
-
-export default CovidPage;
+            
+        </div>
+    )
+}
